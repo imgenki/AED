@@ -1,0 +1,37 @@
+h1 {
+    text-align: center;
+}
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 7px;
+}
+
+th{
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16pt;
+}
+
+td{
+    font-size: 14pt;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.num {
+    text-align: center;
+}
+
+div{
+    margin: auto;
+    width: 50%;
+    border: 2px solid #4CAF50;
+    padding: 10px;
+    text-align: center;
+}
