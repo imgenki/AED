@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="estilo.css">
+    <title></title>
+    <link rel="stylesheet" href="formato.css">
 </head>
 
 <body>
@@ -60,13 +60,13 @@ endforeach;
     </table>
 
     <p class=num>Número de Equipos: <?php echo sizeof($registros)?></p>
-    <div>
+    <div class="bot">
     <form action="insertProc.php" method="POST">
         <button type="sumbit">Inserción con Liga manual</button>
     </form>
 
     </div>
-    <div>
+    <div class="bot">
         <form action="insert.php" method="POST">
         <button class="button" type="submit">Alta con Liga Automática</button>
         </form>
