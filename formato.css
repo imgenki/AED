@@ -30,7 +30,7 @@ tr:nth-child(even) {
 
 div.bot{
     margin: auto;
-    width: 15%;
+    width: 5%;
     border: 2px solid #4CAF50;
     padding: 10px;
     text-align: center;
@@ -38,7 +38,7 @@ div.bot{
 
 div{
     margin: auto;
-    width: 25%;
+    width: 20%;
     border: 2px solid #4CAF50;
     padding: 10px;
     text-align: left;

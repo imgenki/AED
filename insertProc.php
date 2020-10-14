@@ -11,32 +11,9 @@
 <body>
     
 <?php
+
 include("Conexion.php");
-    if(isset($_POST["crea"])){
-
-        $nomEquipo=$_POST["nomEquipo"];
-        $codLiga=$_POST["codLiga"];
-        $localidad=$_POST["localidad"];
-        $internacional=(isset($_POST["internacional"])) ? 1 : 0;
-        
-        $sql="CALL ejerc_2(:nomEquipo, :codLiga, :localidad, :internacional, @LigaExiste, @InsercionCorrecta)";
-        
-        $result=$base->prepare($sql);
-
-        $result->execute(array(':nomEquipo'=>$nomEquipo, ':codLiga'=>$codLiga, ':localidad'=>$localidad, ':internacional'=>$internacional));
-        
-        $result=$base->query("SELECT @LigaExiste as LigaExiste, @InsercionCorrecta as InsercionCorrecta");
-
-        $row = $result->fetch();
-
-        echo ($row['LigaExiste'] == 1) ? "La liga existe" : "La liga no existe; no se puede insertar";
-
-        echo "<br>";
-
-        echo ($row['InsercionCorrecta'] == 1) ? "La Insercion es Correcta" : "No se ha realizado la insercion"; 
-
-        //header("Location:tabla.php");
-    }
+$codigosLiga = $base->query("SELECT codLiga FROM LIGAS")->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 
@@ -50,8 +27,11 @@ include("Conexion.php");
     <br>
 
     <label for="codLiga">Cod. Liga.... </label>
-    <input type="text" id="codLiga" name="codLiga">
-    </input>
+    <select id="codLiga" name="codLiga">
+        <?php foreach($codigosLiga as $codLiga):?>
+        <option value="<?php echo $codLiga->codLiga?>"><?php echo $codLiga->codLiga?></option>
+        <?php endforeach?>
+    </select>
 
     <br>
 
@@ -71,8 +51,33 @@ include("Conexion.php");
     <br>
 
     <form action="tabla.php" method="POST">
-    <button class="button" type="submit">Cancela Creacion</button>
+    <button class="button" type="submit">Volver a la página principal</button>
     </form>
+<?php
+    if(isset($_POST["crea"])){
+
+        $nomEquipo=$_POST["nomEquipo"];
+        $codLiga=$_POST["codLiga"];
+        $localidad=$_POST["localidad"];
+        $internacional=(isset($_POST["internacional"])) ? 1 : 0;
+
+        $sql="CALL ejerc_2(:nomEquipo, :codLiga, :localidad, :internacional, @LigaExiste, @InsercionCorrecta)";
+
+        $result=$base->prepare($sql);
+
+        $result->execute(array(':nomEquipo'=>$nomEquipo, ':codLiga'=>$codLiga, ':localidad'=>$localidad, ':internacional'=>$internacional));
+
+        $result=$base->query("SELECT @LigaExiste as LigaExiste, @InsercionCorrecta as InsercionCorrecta");
+
+        $row = $result->fetch();
+
+        echo ($row['LigaExiste'] == 1) ? "La liga existe" : "La liga no existe; no se puede insertar";
+
+        echo "<br>";
+
+        echo ($row['InsercionCorrecta'] == 1) ? "La Inserción es Correcta" : "No se ha realizado la inserción"; 
+    }
+?>
 </div>
 
 </body>
