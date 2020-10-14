@@ -13,7 +13,7 @@
 <?php
 
 include("Conexion.php");
-$codigosLiga = $base->query("SELECT codLiga FROM LIGAS")->fetchAll(PDO::FETCH_OBJ);
+$codigosLiga = $base->query("SELECT codLiga, nomLiga FROM LIGAS")->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 
@@ -26,10 +26,15 @@ $codigosLiga = $base->query("SELECT codLiga FROM LIGAS")->fetchAll(PDO::FETCH_OB
 
     <br>
 
-    <label for="codLiga">Cod. Liga.... </label>
+    <label for="codLiga">Nom. Liga.... </label>
     <select id="codLiga" name="codLiga">
         <?php foreach($codigosLiga as $codLiga):?>
-        <option value="<?php echo $codLiga->codLiga?>"><?php echo $codLiga->codLiga?></option>
+        <?php if ($codLiga->codLiga == 'PDN'): ?>
+            <option value="<?php echo $codLiga->codLiga?>" selected><?php echo $codLiga->nomLiga?></option>
+
+        <?php else :?>
+            <option value="<?php echo $codLiga->codLiga?>"><?php echo $codLiga->nomLiga?></option>
+        <?php endif; ?> 
         <?php endforeach?>
     </select>
 

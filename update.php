@@ -57,7 +57,7 @@
 
     <br>
 
-    <label for="codLiga">Cod. Liga.... </label>
+    <label for="codLiga">Nom. Liga.... </label>
     <select id="codLiga" name="codLiga">
         <?php foreach($codigosLiga as $codLiga):?>
         <option value="<?php echo $codLiga->codLiga?>"><?php echo $codLiga->nomLiga?></option>

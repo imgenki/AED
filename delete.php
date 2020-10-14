@@ -20,7 +20,7 @@
     header("Location:tabla.php");
 
     }else{
-    $registros = $base->query("SELECT codEquipo, nomEquipo, nomLiga, localidad, internacional FROM EQUIPOS INNER JOIN LIGAS ON Ligas.codLiga=Equipos.codLiga WHERE codEquipo='$id' ");
+    $registros = $base->query("SELECT codEquipo, nomEquipo, codLiga, localidad, internacional FROM EQUIPOS WHERE codEquipo='$id' ");
     $registros->setFetchMode(PDO::FETCH_OBJ);
     }
 ?>
@@ -33,7 +33,7 @@
 
     <p>Nom. Equipo.... <?php echo $row->nomEquipo ?></p>
 
-    <p>Cod. Liga.... <?php echo $row->nomLiga ?></p>
+    <p>Cod. Liga.... <?php echo $row->codLiga ?></p>
 
     <p>Localidad....<?php echo $row->localidad ?></p>
 
