@@ -36,8 +36,7 @@
     <td class="Fila1"><?php echo $equipos->nomEquipo ?></td>
     <td class="Fila1"><?php echo $equipos->codLiga ?></td>
     <td class="Fila1"><?php echo $equipos->localidad ?></td>
-    <td class="Fila1"><?php echo $equipos->internacional ?></td>
-    
+    <td class="Fila1"><?php echo ($equipos->internacional) ? "Sí" : "No";?></td>
     <td class="bot">
         <form action="delete.php" method="POST" >
         <input type="hidden" name="codEquipo" id="codEquipo" value="<?php echo htmlspecialchars($equipos->codEquipo);?>"/>

@@ -37,7 +37,7 @@
 
     <p>Localidad....<?php echo $row->localidad ?></p>
 
-    <p>Internacional....<?php echo $row->internacional ?></p>
+    <p>Internacional....<?php echo ($row->internacional) ? "Sí" : "No";?></p>
 
 <?php
 endwhile;
